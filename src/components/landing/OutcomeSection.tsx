@@ -1,5 +1,6 @@
 import { Target, Zap, Mail } from "lucide-react";
 import { useFadeIn } from "@/hooks/useFadeIn";
+import { trackSectionView } from "@/lib/analytics";
 
 const outcomeCards = [
   {
@@ -20,32 +21,46 @@ const outcomeCards = [
 ];
 
 const OutcomeSection = () => {
-  const ref = useFadeIn();
+  const ref = useFadeIn(() => trackSectionView("outcome"));
 
   return (
     <section className="py-20 sm:py-28">
       <div ref={ref} className="fade-in-section max-w-6xl mx-auto px-4 sm:px-6">
-        <p className="text-sm font-semibold text-primary tracking-widest uppercase mb-4 text-center">Imagine This Instead</p>
+        <p className="text-sm font-semibold text-primary tracking-widest uppercase mb-4 text-center">
+          Imagine This Instead
+        </p>
         <h2 className="text-2xl sm:text-4xl font-bold text-foreground text-center mb-14 max-w-3xl mx-auto">
-          Every Monday morning, you know exactly who changed jobs — and what to say.
+          Every Monday morning, you know exactly who changed jobs — and what to
+          say.
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6 mb-16">
           {outcomeCards.map((card) => (
-            <div key={card.title} className="rounded-lg border border-primary/20 bg-card p-6 ring-1 ring-primary/10">
+            <div
+              key={card.title}
+              className="rounded-lg border border-primary/20 bg-card p-6 ring-1 ring-primary/10"
+            >
               <card.icon className="w-8 h-8 text-primary mb-4" />
-              <h3 className="text-lg font-semibold text-foreground mb-3">{card.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{card.body}</p>
+              <h3 className="text-lg font-semibold text-foreground mb-3">
+                {card.title}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {card.body}
+              </p>
             </div>
           ))}
         </div>
 
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-xl font-bold text-foreground mb-4">
-            There's a better way — and it doesn't require a RevOps team, a six-figure budget, or a Clay expert.
+            There's a better way — and it doesn't require a RevOps team, a
+            six-figure budget, or a Clay expert.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            ChampionTrack monitors your contacts in the background, automatically. No dashboards to check. No lists to refresh. Just a weekly digest of who moved, where they landed, and exactly what to say to them.
+            ChampionTrack monitors your contacts in the background,
+            automatically. No dashboards to check. No lists to refresh. Just a
+            weekly digest of who moved, where they landed, and exactly what to
+            say to them.
           </p>
         </div>
       </div>

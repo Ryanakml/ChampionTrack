@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useFadeIn } from "@/hooks/useFadeIn";
+import { trackEvent, trackSectionView } from "@/lib/analytics";
 
 const faqs = [
   {
@@ -34,7 +35,8 @@ const faqs = [
 ];
 
 const FAQSection = () => {
-  const ref = useFadeIn();
+  const ref = useFadeIn(() => trackSectionView("faq"));
+  const faqLookup = new Map(faqs.map((faq, i) => [`faq-${i}`, faq]));
 
   return (
     <section className="py-20 sm:py-28">
@@ -42,9 +44,27 @@ const FAQSection = () => {
         <h2 className="text-2xl sm:text-4xl font-bold text-foreground text-center mb-14">
           Questions We Get Asked A Lot
         </h2>
-        <Accordion type="single" collapsible className="space-y-3">
+        <Accordion
+          type="single"
+          collapsible
+          className="space-y-3"
+          onValueChange={(value) => {
+            if (!value) return;
+            const match = faqLookup.get(value);
+            void trackEvent({
+              eventType: "faq_click",
+              eventName: "faq_open",
+              section: "faq",
+              metadata: { value, question: match?.q },
+            });
+          }}
+        >
           {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`faq-${i}`} className="border border-border rounded-lg bg-card px-6">
+            <AccordionItem
+              key={i}
+              value={`faq-${i}`}
+              className="border border-border rounded-lg bg-card px-6"
+            >
               <AccordionTrigger className="text-left text-foreground hover:no-underline">
                 {faq.q}
               </AccordionTrigger>

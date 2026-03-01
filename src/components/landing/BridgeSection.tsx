@@ -1,4 +1,5 @@
 import { useFadeIn } from "@/hooks/useFadeIn";
+import { trackSectionView } from "@/lib/analytics";
 
 const steps = [
   {
@@ -19,16 +20,20 @@ const steps = [
 ];
 
 const BridgeSection = () => {
-  const ref = useFadeIn();
+  const ref = useFadeIn(() => trackSectionView("bridge"));
 
   return (
     <section className="py-20 sm:py-28 bg-surface">
-      <div ref={ref} className="fade-in-section max-w-6xl mx-auto px-4 sm:px-6 text-center">
+      <div
+        ref={ref}
+        className="fade-in-section max-w-6xl mx-auto px-4 sm:px-6 text-center"
+      >
         <h2 className="text-3xl sm:text-5xl font-bold text-foreground mb-2">
           Champion<span className="text-primary">Track</span>
         </h2>
         <p className="text-lg text-muted-foreground mb-16 max-w-2xl mx-auto">
-          The job change alert tool built for AEs, SDRs, and small sales teams — not enterprise RevOps departments.
+          The job change alert tool built for AEs, SDRs, and small sales teams —
+          not enterprise RevOps departments.
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -40,8 +45,12 @@ const BridgeSection = () => {
               {i < steps.length - 1 && (
                 <div className="hidden md:block absolute top-7 left-[calc(50%+40px)] w-[calc(100%-80px)] h-px bg-border" />
               )}
-              <h3 className="text-lg font-semibold text-foreground mb-3">{step.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
+              <h3 className="text-lg font-semibold text-foreground mb-3">
+                {step.title}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {step.desc}
+              </p>
             </div>
           ))}
         </div>

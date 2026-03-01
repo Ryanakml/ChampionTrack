@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Check, Rocket } from "lucide-react";
 import { useFadeIn } from "@/hooks/useFadeIn";
+import { trackEvent, trackSectionView } from "@/lib/analytics";
 
 const bullets = [
   "Get alerts the moment a champion changes jobs",
@@ -13,11 +14,19 @@ const bullets = [
 const HeroSection = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const ref = useFadeIn();
+  const ref = useFadeIn(() => trackSectionView("hero"));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    if (email) {
+      setSubmitted(true);
+      void trackEvent({
+        eventType: "email_submit",
+        eventName: "hero_email_submit",
+        section: "hero",
+        email,
+      });
+    }
   };
 
   return (
@@ -122,12 +131,28 @@ const HeroSection = () => {
                     placeholder="Enter your work email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    onInvalid={() =>
+                      void trackEvent({
+                        eventType: "form_error",
+                        eventName: "hero_email_invalid",
+                        section: "hero",
+                        metadata: { field: "email" },
+                      })
+                    }
                     required
                     className="flex-1 bg-card border-border h-12"
                   />
                   <Button
                     type="submit"
                     size="lg"
+                    onClick={() =>
+                      void trackEvent({
+                        eventType: "cta_click",
+                        eventName: "hero_cta_click",
+                        section: "hero",
+                        buttonText: "Start Tracking My Champions",
+                      })
+                    }
                     className="h-12 px-6 font-semibold gap-2 shadow-[0_0_18px_rgba(59,130,246,0.35)]"
                   >
                     <Rocket className="w-4 h-4" />

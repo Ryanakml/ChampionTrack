@@ -1,13 +1,17 @@
 import { Star } from "lucide-react";
 import { useFadeIn } from "@/hooks/useFadeIn";
+import { trackSectionView } from "@/lib/analytics";
 
 const initials = ["SC", "JB", "MR", "AK"];
 
 const SocialProofBar = () => {
-  const ref = useFadeIn();
+  const ref = useFadeIn(() => trackSectionView("social_proof"));
 
   return (
-    <section ref={ref} className="fade-in-section py-8 bg-surface border-y border-border">
+    <section
+      ref={ref}
+      className="fade-in-section py-8 bg-surface border-y border-border"
+    >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
         <p className="text-sm text-muted-foreground text-center">
           Trusted by AEs, SDRs, and founders who are done missing warm leads.
@@ -28,7 +32,9 @@ const SocialProofBar = () => {
               <Star key={i} className="w-4 h-4 fill-primary text-primary" />
             ))}
           </div>
-          <span className="text-sm text-muted-foreground font-medium">5/5 from early users</span>
+          <span className="text-sm text-muted-foreground font-medium">
+            5/5 from early users
+          </span>
         </div>
       </div>
     </section>
