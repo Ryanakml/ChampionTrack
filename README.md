@@ -1,73 +1,112 @@
-# Welcome to your Lovable project
+# Track a Champion
 
-## Project info
+> **Track and manage your champion's progress like never before**
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Track a Champion is a modern SaaS platform designed to help you monitor, analyze, and optimize your champion's performance metrics in real-time.
 
-## How can I edit this code?
+![Track a Champion](./public/mock.png)
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+- 🎯 **Real-time Performance Tracking** - Monitor key metrics and KPIs with live updates
+- 📊 **Advanced Analytics** - Comprehensive dashboards and detailed reports
+- 🎨 **Modern UI** - Beautiful, responsive interface built for desktop and mobile
+- ⚡ **Fast & Reliable** - Built with cutting-edge technologies for optimal performance
+- 🔐 **Secure** - Enterprise-grade security and data protection
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 🚀 Quick Start
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js (v18 or higher)
+- npm or bun
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```bash
+# Clone the repository
+git clone <repository-url>
 
-Follow these steps:
+# Navigate to project directory
+cd track-a-champion
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Install dependencies
+npm install
+# or
+bun install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
+# or
+bun run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will open at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📦 Tech Stack
 
-**Use GitHub Codespaces**
+| Technology       | Purpose                     |
+| ---------------- | --------------------------- |
+| **React**        | UI framework                |
+| **TypeScript**   | Type-safe JavaScript        |
+| **Vite**         | Build tool & dev server     |
+| **Tailwind CSS** | Utility-first CSS framework |
+| **shadcn-ui**    | Component library           |
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📁 Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/        # Reusable React components
+│   ├── landing/      # Landing page sections
+│   └── ui/           # shadcn-ui components
+├── hooks/            # Custom React hooks
+├── lib/              # Utility functions
+├── pages/            # Page components
+└── main.tsx          # Application entry point
+```
 
-This project is built with:
+## 🛠️ Available Scripts
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```bash
+# Development
+npm run dev          # Start dev server
 
-## How can I deploy this project?
+# Build
+npm run build        # Build for production
+npm run preview      # Preview production build
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+# Testing
+npm run test         # Run tests
+npm run test:ui      # Run tests with UI
 
-## Can I connect a custom domain to my Lovable project?
+# Code Quality
+npm run lint         # Run ESLint
+```
 
-Yes, you can!
+## 🔄 Development Workflow
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. Create a feature branch: `git checkout -b feature/your-feature`
+2. Make your changes and commit: `git commit -m 'feat: add new feature'`
+3. Push to branch: `git push origin feature/your-feature`
+4. Open a Pull Request
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 📝 Code Style
+
+This project uses:
+
+- **ESLint** - Code linting
+- **Prettier** - Code formatting (via ESLint)
+- **TypeScript** - Static type checking
+
+## 📄 License
+
+This project is proprietary and confidential.
+
+## 📞 Support
+
+For questions or issues, please contact the development team.
+
+---
+
+**Made with ❤️ by the Track a Champion Team (Which is me and my self)**
